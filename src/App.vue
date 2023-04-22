@@ -17,7 +17,7 @@ export default {
     '$i18n.locale': 'i18nHandle'
   },
   created () {
-    this.i18nHandle(this.$i18n.locale)
+    this.i18nHandle('en')
     //在页面加载时读取sessionStorage里的状态信息
     let sessionStorage = window.sessionStorage;
     if (sessionStorage.getItem("store") ) {
