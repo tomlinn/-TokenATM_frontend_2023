@@ -11,7 +11,7 @@ export const pageRoutes = [
     path: '/404',
     component: () => import('@/views/pages/404'),
     name: '404',
-    meta: { title: '404未找到' },
+    meta: { title: '404 not found' },
     beforeEnter (to, from, next) {
       // 拦截处理特殊业务场景
       // 如果, 重定向路由包含__双下划线, 为临时添加路由
@@ -21,7 +21,7 @@ export const pageRoutes = [
       next()
     }
   },
-  { path: '/login', component: () => import('@/views/pages/login'), name: 'login', meta: { title: '登录' } }
+  { path: '/login', component: () => import('@/views/pages/login'), name: 'login', meta: { title: 'Login' } }
 ]
 
 // 模块路由(基于主入口布局页面)
