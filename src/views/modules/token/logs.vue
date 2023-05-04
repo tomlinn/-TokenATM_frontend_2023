@@ -61,10 +61,8 @@ export default {
     watch: {},
     methods: {
         getLogs() {
-            this.$http({
-                url: this.$http.adornUrl('/logs'),
-                method: 'get',
-            }).then(({ data }) => {
+            this.$http.get('/logs')
+            .then(({ data }) => {
                 this.tableData = data.map(d => {
                     d.timestamp = new Date(d.timestamp).toLocaleString();
                     return d;
