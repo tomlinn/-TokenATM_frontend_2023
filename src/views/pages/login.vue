@@ -16,11 +16,18 @@
               </el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input v-model="dataForm.password" type="password" :placeholder="$t('login.password')">
-                <span slot="prefix" class="el-input__icon">
-                  <svg class="icon-svg" aria-hidden="true"><use xlink:href="#icon-lock"></use></svg>
-                </span>
-              </el-input>
+              <el-row :gutter="20">
+                <el-col :span="14">
+                  <el-input v-model="dataForm.password" type="password" :placeholder="$t('login.password')">
+                    <span slot="prefix" class="el-input__icon">
+                      <svg class="icon-svg" aria-hidden="true"><use xlink:href="#icon-lock"></use></svg>
+                    </span>
+                  </el-input>
+                </el-col>
+                <el-col :span="10">
+                  <el-button type="primary" @click="sendPassword()" class="w-percent-100">Get Password</el-button>
+                </el-col>
+              </el-row>
             </el-form-item>
             <el-form-item prop="captcha">
               <el-row :gutter="20">
@@ -42,10 +49,8 @@
           </el-form>
         </div>
         <div class="login-footer">
-          <p>
-            <a href="http://demo.open.renren.io/renren-security" target="_blank">{{ $t('login.demo') }}</a>
-          </p>
-          <p><a href="https://www.renren.io/" target="_blank">{{ $t('login.copyright') }}</a>2022 © renren.io</p>
+          <p><a href="*" target="_blank">{{ $t('login.demo') }}</a></p>
+          <p><a href="*" target="_blank">{{ $t('login.copyright') }}</a></p>
         </div>
       </main>
     </div>
@@ -107,7 +112,10 @@ export default {
           this.$router.replace({ name: 'home' })
         }).catch(() => {})
       })
-    }, 1000, { 'leading': true, 'trailing': false })
+    }, 1000, { 'leading': true, 'trailing': false }),
+    sendPassword () {
+      this.$http.post('/send_password', this.dataForm).then();
+    }
   }
 }
 </script>
