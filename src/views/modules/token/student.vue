@@ -32,7 +32,7 @@
         <el-table-column header-align="center" align="center" :min-width="20" label="Operation">
           <template slot-scope="scope">
             <el-button type="primary" size="small" @click="open(scope.row, scope.$index)"
-              :disabled="scope.row.token_required > tokenNumber || scope.row.grade == scope.row.maxGrade || scope.row.status == 'overdue'">request
+              :disabled="scope.row.token_required > tokenNumber || scope.row.grade == scope.row.maxGrade || scope.row.status == 'overdue' || scope.row.status == 'Not graded yet'">request
               resubmission</el-button>
           </template>
         </el-table-column>
@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       tableData: [],
-      tokenNumber: 0,
+      tokenNumber: "N/A",
       userId: this.$store.state.user.studentID,
       dataListLoading: false,
       dialogVisible: false
@@ -62,7 +62,7 @@ export default {
   filters: {
     forStatus(tableData) {
       return tableData.filter(function (item) {
-        if (item.status == "none" || item.status == "overdue") {
+        if (item.status == "none" || item.status == "overdue" || item.status == "Not graded yet") {
           return item;
         }
       })
@@ -70,13 +70,16 @@ export default {
   },
   methods: {
     getTokenNumber() {
-      this.$http.get('/tokens/'+this.userId)
-      .then(({ data }) => {
-        console.log("total number", data)
-        this.tokenNumber = data
+      this.$http.get('/tokens/' + this.userId)
+        .then(({ data }) => {
+          if (data.code && data.code !== 0) {
+            return this.$message.error(data.msg)
+          }
+          console.log("total number", data)
+          this.tokenNumber = data
       }).catch((e) => {
         console.log(e)
-      });
+        });
     },
     contact() {
       this.$alert('If you have 3 tokens, contact teaching assistants teachingAssistant@uci.edu', 'Message', {
@@ -95,10 +98,10 @@ export default {
       this.$http.get('/assignment_status/' + this.userId)
       .then(({ data }) => {
         // console.log(data)
-        this.tableData = data.map(d => {
-          d.deadline = new Date(d.deadline).toLocaleString();
-          return d;
-        });
+        for (let i = 0; i < data.length; i++) {
+          data[i].deadline = new Date(data[i].deadline).toLocaleString();
+        }
+        this.tableData = data;
         this.dataListLoading = false
       })
     },
