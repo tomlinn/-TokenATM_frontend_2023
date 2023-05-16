@@ -13,18 +13,6 @@
       <el-form-item prop="confirmPassword" :label="$t('user.confirmPassword')" :class="{ 'is-required': !dataForm.id }">
         <el-input v-model="dataForm.confirmPassword" type="password" :placeholder="$t('user.confirmPassword')"></el-input>
       </el-form-item>
-      <el-form-item prop="realName" :label="$t('user.realName')">
-        <el-input v-model="dataForm.realName" :placeholder="$t('user.realName')"></el-input>
-      </el-form-item>
-      <el-form-item prop="gender" :label="$t('user.gender')">
-        <ren-radio-group v-model="dataForm.gender" dict-type="gender"></ren-radio-group>
-      </el-form-item>
-      <el-form-item prop="email" :label="$t('user.email')">
-        <el-input v-model="dataForm.email" :placeholder="$t('user.email')"></el-input>
-      </el-form-item>
-      <el-form-item prop="mobile" :label="$t('user.mobile')">
-        <el-input v-model="dataForm.mobile" :placeholder="$t('user.mobile')"></el-input>
-      </el-form-item>
       <el-form-item prop="roleIdList" :label="$t('user.roleIdList')" class="role-list">
         <el-select v-model="dataForm.roleIdList" multiple :placeholder="$t('user.roleIdList')">
           <el-option v-for="role in roleList" :key="role.id" :label="role.name" :value="role.id"></el-option>

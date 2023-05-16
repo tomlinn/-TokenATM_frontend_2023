@@ -6,9 +6,6 @@
           <el-input v-model="dataForm.username" :placeholder="$t('user.username')" clearable></el-input>
         </el-form-item>
         <el-form-item>
-          <ren-select v-model="dataForm.gender" dict-type="gender" :placeholder="$t('user.gender')"></ren-select>
-        </el-form-item>
-        <el-form-item>
           <ren-dept-tree v-model="dataForm.deptId" :placeholder="$t('dept.title')" :query="true"></ren-dept-tree>
         </el-form-item>
         <el-form-item>
@@ -34,13 +31,6 @@
         <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
         <el-table-column prop="username" :label="$t('user.username')" sortable="custom" header-align="center" align="center"></el-table-column>
         <el-table-column prop="deptName" :label="$t('user.deptName')" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="email" :label="$t('user.email')" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="mobile" :label="$t('user.mobile')" sortable="custom" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="gender" :label="$t('user.gender')" sortable="custom" header-align="center" align="center">
-          <template slot-scope="scope">
-            {{ $getDictLabel("gender", scope.row.gender) }}
-          </template>
-        </el-table-column>
         <el-table-column prop="status" :label="$t('user.status')" sortable="custom" header-align="center" align="center">
           <template slot-scope="scope">
             <el-tag v-if="scope.row.status === 0" size="small" type="danger">{{ $t('user.status0') }}</el-tag>
