@@ -134,7 +134,7 @@ export default {
             this.getPendingRequests();
           } else {
             this.$message({
-              type: 'info',
+              type: 'warning',
               message: response.data.message
             })
           }
@@ -191,21 +191,16 @@ export default {
             'assignmentId': data.assignmentId,
             'tokenCount': data.tokenCount,
           }).then((response) => {
-          // console.log(response.data)
-          if (response.data.assignmentId != "failed") {
+          if (response.data.assignment_id != "failed") {
             data.status = "Cancelled"
-            // this.$set(this.tableData,index,row)
-            // console.log(data.token_required)
-            // auto-open
-            // window.open('https:\\canvas.instructure.com/courses/3737737/assignments/'+ data.resubmission_id, '_blank'),
-            this.$message({
+             this.$message({
               type: 'success',
               message: 'Resubmission has been canceled'
             })
           }
           else {
             this.$message({
-              type: 'info',
+              type: 'warning',
               message: response.data.message
             });
           }
