@@ -24,7 +24,7 @@
             <el-table-column header-align="center" align="center" label="operation" :min-width="20">
                 <template slot-scope="scope">
                     <el-button type="primary" size="small" @click="showUpdateDialog(scope.row.id)">update</el-button>
-                    <el-button type="danger" size="small" @click="deleteConfig(scope.row.id)">delete</el-button>
+                    <el-button type="danger" v-if="isConfigTypeAllowed(scope.row.configType)" size="small" @click="deleteConfig(scope.row.id)">delete</el-button>
                 </template>
             </el-table-column>
 
@@ -32,7 +32,7 @@
         <el-dialog :visible.sync="dialogVisible">
             <span class="title_Dialog">Update Config</span>
             <el-form ref="dataForm" :model="dataForm">
-                <el-form-item label="Config Name">
+                <el-form-item :label="dataForm.config_type">
                     <el-input v-model="dataForm.config_name"></el-input>
                 </el-form-item>
             </el-form>
@@ -66,13 +66,15 @@ export default {
             dataForm: {
                 tokenNum: 0,
                 user_id: 0,
-                config_name: ''
+                config_name: '',
+                config_type: ''
             },
             formData: {
                 config_type: '',
                 config_name: ''
             },
-            AddDialogVisible: false
+            AddDialogVisible: false,
+            whitelist: []
         };
     },
     computed: {
@@ -141,6 +143,7 @@ export default {
             const row = this.tableData.find(row => row.id === id);
             if (row) {
                 this.dataForm.config_name = row.configName;
+                this.dataForm.config_type = row.configType;
                 this.dialogVisible = true;
                 this.dataForm.id = id;
             }
@@ -182,6 +185,9 @@ export default {
         },
         resetFilter() {
             this.loadConfig()
+        },
+        isConfigTypeAllowed(configType) {
+            return !this.whitelist.includes(configType);
         }
         
     },
