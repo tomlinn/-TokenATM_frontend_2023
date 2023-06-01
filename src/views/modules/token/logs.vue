@@ -23,6 +23,8 @@
             </el-table-column>
             <el-table-column prop="source" label="assignment id" :min-width="25" sortable="">
             </el-table-column>
+            <el-table-column prop="sourceName" label="Name" :min-width="25" sortable="">
+            </el-table-column>
             <el-table-column prop="timestamp" label="timestamp" :min-width="20" sortable="">
             </el-table-column>
             <el-table-column prop="tokenCount" label="used token" :min-width="10" sortable="">

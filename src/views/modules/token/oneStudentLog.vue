@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div style="margin-bottom : 10px">
-            <el-button type="primary" @click="getLogs()">Refresh </el-button>
-        </div>
         <div style="display:block; padding-bottom: 10px;">
             <el-input v-model="dataForm.search_text" placeholder="Filter ex. Bonald Dren, Module 1">
             </el-input>
@@ -13,11 +10,11 @@
                     <span>empty~</span>
                 </el-empty>
             </template>
+            <el-table-column prop="sourceName" label="assignment" :min-width="25" sortable>
+            </el-table-column>
             <el-table-column label="operation" prop="type" :min-width="25" sortable>
             </el-table-column>
             <el-table-column prop="tokenCount" label="token count" :min-width="25" sortable>
-            </el-table-column>
-            <el-table-column prop="source" label="assignment" :min-width="25" sortable>
             </el-table-column>
             <el-table-column prop="timestamp" label="timestamp" :min-width="25" sortable>
             </el-table-column>
