@@ -189,6 +189,7 @@ export default {
         this.$http.post('/cancel/',{
             'studentId': data.studentId,
             'assignmentId': data.assignmentId,
+            'assignmentName': data.assignmentName,
             'tokenCount': data.tokenCount,
           }).then((response) => {
           if (response.data.assignment_id != "failed") {

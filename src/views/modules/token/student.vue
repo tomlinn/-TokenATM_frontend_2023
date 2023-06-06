@@ -120,6 +120,7 @@ export default {
         this.$http.post('/request/',{
             'studentId': this.userId,
             'assignmentId': data.assignment_id,
+            'assignmentName': data.name,
             'tokenCount': data.token_required,
           }).then((response) => {
           // console.log(response.data)
