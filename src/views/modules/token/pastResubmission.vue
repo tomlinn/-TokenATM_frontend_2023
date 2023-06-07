@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div style="margin-bottom : 10px">
-        <el-button type="primary" @click="getAssignmentStatus()">Refresh </el-button>
-    </div>
     <el-table :data="tableData | forStatus" style="width: 100%" v-loading="dataListLoading">
       <template slot="empty">
         <el-empty description="empty">
@@ -66,7 +63,8 @@ export default {
         this.$http.post('/cancel/',{
           'studentId': this.userId,
           'assignmentId': data.assignment_id,
-          'tokenCount': data.token_required
+          'assignmentName': data.name,
+          'tokenCount': data.token_required,
         }).then((response) => {
           // console.log(response.data)
           if (response.data.assignment_id != "failed") {
