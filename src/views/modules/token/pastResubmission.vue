@@ -1,11 +1,6 @@
 <template>
   <div>
     <el-table :data="tableData | forStatus" style="width: 100%" v-loading="dataListLoading">
-      <template slot="empty">
-        <el-empty description="empty">
-          <span>empty~</span>
-        </el-empty>
-      </template>
       <el-table-column prop="name" label="Assignment Name" :min-width="20" sortable>
       </el-table-column>
       <el-table-column prop="grade" label="Grade" :min-width="15" sortable>

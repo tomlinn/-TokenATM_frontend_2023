@@ -1,11 +1,6 @@
 <template>
   <div>
     <el-table :data="tableData" border style="width: 100%">
-      <template slot="empty">
-                <el-empty description="empty">
-                    <span>empty~</span>
-                </el-empty>
-            </template>
       <el-table-column prop="userId" label="Student id" width="180">
       </el-table-column>
       <el-table-column prop="type" label="Type" width="180">

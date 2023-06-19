@@ -8,11 +8,6 @@
             <el-button type="succsss" @click="filterCanvasConfig">Canvas Config</el-button>
         </div>
         <el-table :data="tableData" border width="100%">
-            <template slot="empty">
-                <el-empty description="empty">
-                    <span>empty~</span>
-                </el-empty>
-            </template>
             <el-table-column prop="id" label="id" :min-width="10" sortable>
             </el-table-column>
             <el-table-column prop="configType" label="Config Type" :min-width="20" sortable>

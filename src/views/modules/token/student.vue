@@ -12,11 +12,6 @@
     </el-row>
     <div class="form-group">
       <el-table :data="tableData | forStatus" width="100%" v-loading="dataListLoading" border>
-        <template slot="empty">
-          <el-empty description="empty">
-            <span>empty~</span>
-          </el-empty>
-        </template>
         <el-table-column prop="name" label="Assignment Name" :min-width="20" sortable>
         </el-table-column>
         <el-table-column prop="grade" label="Grade" :min-width="8" sortable>

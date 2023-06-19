@@ -5,11 +5,6 @@
             </el-input>
         </div>
         <el-table :data="filteredTableData" border width="100%">
-            <template slot="empty">
-                <el-empty description="empty">
-                    <span>empty~</span>
-                </el-empty>
-            </template>
             <el-table-column prop="sourceName" label="assignment" :min-width="25" sortable>
             </el-table-column>
             <el-table-column label="operation" prop="type" :min-width="25" sortable>

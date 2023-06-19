@@ -8,11 +8,6 @@
             </el-input>
         </div>
         <el-table :data="filteredTableData" border width="100%" v-loading="dataListLoading">
-            <template slot="empty">
-                <el-empty description="empty">
-                    <span>empty~</span>
-                </el-empty>
-            </template>
             <el-table-column prop="user_id" label="Student id" :min-width="10" sortable>
             </el-table-column>
             <el-table-column prop="user_name" label="Student name" :min-width="20" sortable>
