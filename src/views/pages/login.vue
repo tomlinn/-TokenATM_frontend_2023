@@ -114,7 +114,14 @@ export default {
       })
     }, 1000, { 'leading': true, 'trailing': false }),
     sendPassword () {
-      this.$http.post('/send_password', this.dataForm).then();
+      this.$http.post('/send_password', this.dataForm).then( ({data: res}) => {
+          return this.$message({
+                        message: res.msg,
+                        type: 'info',
+                        duration: 3000
+                    })
+        }
+      );
     }
   }
 }
